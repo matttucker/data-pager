@@ -1,0 +1,102 @@
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+
+<link rel="import" href="data-pager.html">
+
+<!--
+Element extending the data-pager to paginate messages data.
+
+##### Example
+
+    <messages></messages>
+
+@element messages
+@blurb Element providing solution to no problem in particular.
+@status alpha
+@homepage http://.github.io/messages
+-->
+<polymer-element name="messages-element" attributes="url" extends="data-pager">
+
+<template>
+  <link rel="stylesheet" href="messages-element.css" />
+
+  <core-ajax url={{url}}  handleAs="json"
+  params={{params}} auto response="{{response}}"></core-ajax>
+
+
+
+  <h1>Messages <span>({{currentpage}}/{{pageCount}})</span></h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Message</th>
+        <th>Updated At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <template repeat="{{message in messages}}">
+        <tr on-click={{row_selected}}>
+          <td>
+            {{message.id}}
+          </td>
+          <td>
+            {{ message.text}}
+          </td>
+          <td>
+            {{ message.status_date}}
+          </td>
+        </tr>
+      </template>
+    </tbody>
+  </table>
+
+  <shadow></shadow>
+
+  
+
+</template>
+
+
+
+<script>
+
+  Polymer('messages-element', {
+
+    ready: function() {
+     this.super()
+   },
+
+   responseChanged: function(oldValue) {
+    console.log("response changed")
+    console.log(this.response.messages);
+
+    //sort the results depending on the pagination direction
+    this.messages = this.sortResults(this.response.messages)
+
+    //Set the bookmarks
+    bookmarks = this.response.bookmarks
+    this.setBookmarks(bookmarks[0], bookmarks[1], this.messages.length)
+
+    this.setTotalItems(this.response.total_rows)
+
+    console.log('total items:'+ this.totalItems)
+  },
+
+  pageParamsChanged: function(oldValue) {
+    console.log("page pagination parameters changed")
+    this.params = this.pageParams;
+  },
+
+
+});
+
+
+
+</script>
+
+
+
+</polymer-element>

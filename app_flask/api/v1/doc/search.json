@@ -1,0 +1,76 @@
+{
+    "apis" : [
+            {
+                "path" : "/search",
+                "description" : "Search operations.",
+                "operations" : [ {
+                    "httpMethod" : "GET",
+                    "nickname" : "get_search",
+                    "summary" : "Get a list of search results.",
+                    "notes" : "",
+                    "parameters" : [ {
+                        "name" : "q",
+                        "description" : "Query string.",
+                        "required" : true,
+                        "dataType" : "string",
+                        "paramType" : "query"
+                    },
+                    {
+                        "name" : "limit",
+                        "description" : "Maximum number of results to return.",
+                        "required" : false,
+                        "dataType" : "int",
+                        "paramType" : "query"
+                },
+                {
+                    "name" : "type",
+                    "description" : "Filter results by document type",
+                    "required" : false,
+                    "dataType" : "string",
+                    "paramType" : "query"
+                } ]
+                }
+
+                ]
+            },
+            {
+                "path" : "/autocomplete",
+                "description" : "Autocomplete operations.",
+                "operations" : [ {
+                    "httpMethod" : "GET",
+                    "nickname" : "get_autocomplete",
+                    "summary" : "Get a list of autocomplete results for a query",
+                    "notes" : "",
+                    "parameters" : [ {
+                        "name" : "q",
+                        "description" : "Query string.",
+                        "required" : true,
+                        "dataType" : "string",
+                        "paramType" : "query"
+                    },
+                    {
+                        "name" : "limit",
+                        "description" : "Maximum number of results to return.",
+                        "required" : false,
+                        "dataType" : "int",
+                        "paramType" : "query"
+                },
+                    {
+                        "name" : "with_type",
+                        "description" : "Return field type (e.g. 'artist', 'genre', etc.)",
+                        "required" : false,
+                        "dataType" : "boolean",
+                        "paramType" : "query"
+                }
+                    
+                    ]
+                }
+
+                ]
+            }
+            
+            ],
+    "apiVersion" : "1.0",
+    "swaggerVersion" : "1.1",
+    "basePath" : "/api/v1"
+}

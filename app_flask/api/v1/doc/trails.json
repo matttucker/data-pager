@@ -1,0 +1,65 @@
+{
+    "apis": [{
+            "path": "/trails/{id}",
+            "description": "Operations on a trail.",
+            "operations": [{
+                "httpMethod": "GET",
+                "nickname": "get_trail_by_id",
+                "summary": "Get trail by its id.",
+                "description": "Get trail by its id.",
+                "notes": "",
+                "parameters": [{
+                    "name": "id",
+                    "description": "Unique id of area.",
+                    "required": true,
+                    "dataType": "string",
+                    "paramType": "path"
+                }]
+            }]
+        }, {
+            "path": "/trails",
+            "description": "Query trails.",
+            "operations": [{
+                "httpMethod": "GET",
+                "nickname": "get_trails",
+                "summary": "Get trails",
+                "description": "Get trails",
+                "notes": "",
+                "parameters": [{
+                        "name": "start",
+                        "description": "Start trail id for paging",
+                        "required": false,
+                        "dataType": "string",
+                        "paramType": "query"
+                    }, {
+                        "name": "limit",
+                        "description": "limit",
+                        "required": false,
+                        "dataType": "int",
+                        "paramType": "query"
+                    }, {
+                        "name": "skip",
+                        "description": "skip",
+                        "required": false,
+                        "dataType": "int",
+                        "paramType": "query"
+                    }, {
+                        "name": "descending",
+                        "description": "descending",
+                        "required": false,
+                        "dataType": "boolean",
+                        "paramType": "query"
+                    }
+
+
+                ]
+            }]
+        }
+
+
+
+    ],
+    "apiVersion": "1",
+    "swaggerVersion": "1.1",
+    "basePath": "/api/v1"
+}

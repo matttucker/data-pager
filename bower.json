@@ -1,0 +1,21 @@
+{
+  "name": "webapp",
+  "version": "0.0.0",
+  "authors": [
+    "mtucker <mtucker@cardinalpeak.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "core-ajax": "Polymer/core-ajax#>=0.3.0 <1.0.0",
+    "polymer": "Polymer/polymer#~0.3.4",
+    "platform": "Polymer/platform#~0.3.4"
+  }
+}

@@ -1,0 +1,22 @@
+{
+    "apis": [
+
+        {
+            "path": "/areas.json",
+            "description": ""
+        }, {
+            "path": "/comments.json",
+            "description": ""
+        }, {
+            "path": "/users.json",
+            "description": ""
+        }, {
+            "path": "/trails.json",
+            "description": ""
+        }
+
+    ],
+    "apiVersion": "1",
+    "swaggerVersion": "1.1.15",
+    "basePath": "<URL_BASE>/api/v1/doc"
+}

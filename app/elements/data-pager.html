@@ -1,0 +1,54 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/page-er/page-er.html">
+
+
+
+
+<!--
+Element providing pagination of data datasets.
+
+##### Example
+
+    <data-pager></data-pager>
+
+@element data-pager
+@blurb Element providing pagination of data datasets.
+@status alpha
+@homepage http://.github.io/data-pager
+-->
+<polymer-element name="data-pager" attributes="descending" extends="page-er">
+
+<template>
+  <link rel="stylesheet" href="data-pager.css" />
+
+  <div class="pagination">
+    <ul>
+      <li>
+        <button id="first_page_button" on-click="{{firstPage}}" >{{firstLabel}}</button>
+      </li>
+      <li>
+        <button id="prev_page_button"  on-click="{{prevPage}}" >{{prevLabel}}</button>
+      </li>
+
+      <template repeat="{{n in currentRange}}">
+        <li data-item="{{n}}" on-click="{{setPage}}">
+          <button  class="{{n == currentpage ? 'active' : ''}}">{{n}}</button>
+        </li>
+      </template>
+
+      <li>
+        <button  id="next_page_button" on-click="{{nextPage}}">{{nextLabel}}</button>
+      </li>
+      <li>
+        <button id="last_page_button" on-click="{{lastPage}}">{{lastLabel}}</button>
+      </li>
+    </ul>
+  </div>
+
+</template>
+
+
+<script src="data-pager.js"></script>
+
+
+</polymer-element>

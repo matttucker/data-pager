@@ -1,0 +1,91 @@
+{
+    "apis": [
+
+    {
+        "path": "/comments/{id}",
+        "description": "Operations on a specific comment.",
+        "operations": [{
+                "httpMethod": "GET",
+                "nickname": "get_comment_by_id",
+                "summary": "Get comment by their unique ID.",
+                "description": "Get comment by their unique ID.",
+                "notes": "",
+                "parameters": [{
+                    "name": "id",
+                    "description": "Unique id of comment. 'self' indicates the currently signed in comment.",
+                    "required": true,
+                    "dataType": "string",
+                    "paramType": "path"
+                }]
+            }, {
+                "httpMethod": "PUT",
+                "nickname": "update_comment",
+                "summary": "Update comment fields.",
+                "description": "Update comment fields.",
+                "notes": "",
+                "parameters": [{
+                        "name": "id",
+                        "description": "Unique id of comment. 'self' indicates the currently signed in comment.",
+                        "required": true,
+                        "dataType": "string",
+                        "paramType": "path"
+                    }, {
+                        "name": "name",
+                        "description": "Name of comment.",
+                        "required": false,
+                        "dataType": "string",
+                        "paramType": "form"
+                    }
+
+                ]
+            }
+
+        ]
+    },
+    {
+        "path": "/comments",
+        "description": "Operations on comments.",
+        "operations": [  {
+                "httpMethod": "POST",
+                "nickname": "new_comment",
+                "summary": "Create a comment",
+                "description": "Create a comment",
+                "notes": "",
+                "parameters": [ {
+                        "name": "trail_ids",
+                        "description": "Trail ids",
+                        "required": true,
+                        "dataType": "string",
+                        "paramType": "form"
+                    },
+                    {
+                        "name": "message",
+                        "description": "Message",
+                        "required": true,
+                        "dataType": "string",
+                        "paramType": "form"
+                    },
+                    {
+                        "name": "condition",
+                        "description": "Condition",
+                        "required": true,
+                        "dataType": "string",
+                        "paramType": "form"
+                    }
+
+                ]
+            }
+
+        ]
+    }
+
+
+
+
+
+
+    ],
+    "apiVersion": "1",
+    "swaggerVersion": "1.1",
+    "basePath": "/api/v1"
+}

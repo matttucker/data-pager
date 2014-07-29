@@ -1,0 +1,72 @@
+# Exclude virtual environment and bin dirs
+venv/
+
+dist/
+
+# eclipse
+.settings/
+
+# python
+*.py[co]
+
+# Mac OS X custom attribute files
+.DS_Store
+
+# Misc
+*errors*.txt
+octave-core
+*.dump
+*cropped*.jpeg
+*.log
+
+# playlists files
+playlists/*.csv
+
+# security files
+secure/
+
+# cache directorys
+.yonder-http-cache/
+tmp/
+temp*.jpg
+json/
+manifest.json
+
+# couchapp design id that gets modified on push
+_id
+designs-injected/
+
+newrelic.ini
+
+# testing
+mkt-*
+mkt_*
+amazon_to_medianet_tracks.json
+
+# emacs, vim
+*~
+*.sw[op]
+
+# ctags
+/tags
+
+# virtualenv 
+/bin
+/build
+/include
+/man
+/local
+/lib
+
+/share
+
+# pip build dirs
+couchapp
+restkit
+socketpool
+
+# adriel's ide
+*/.idea/*
+
+/web-server/local
+/web-server/.coverage

@@ -1,0 +1,13 @@
+table {
+    border: 1px solid #eeeeee;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+table th, table td {
+    text-align: center;
+    padding: 6px;
+}
+tbody > tr:nth-child(2n+1) > td, tbody > tr:nth-child(2n+1) > th {
+    background-color: #eeeeee;
+}

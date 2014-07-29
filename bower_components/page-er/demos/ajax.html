@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>page-er Demo</title>
+
+  <script src="../../platform/platform.js"></script>
+  <link rel="import" href="../page-er.html">
+  <link rel="import" href="../../flatiron-director/flatiron-director.html">
+  <link rel="import" href="../../core-ajax/core-ajax.html">
+  <style>
+  	body {
+  		font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  	}
+
+	.container{
+		margin: 0 auto;
+		width: 960px;
+	}
+	table {
+		border: 1px solid #eeeeee;
+		border-collapse: collapse;
+		border-spacing: 0;
+		width: 100%;
+		text-align: left;
+	}
+	table th, table td {
+		text-align: center;
+		padding: 6px;
+	}
+	tbody > tr:nth-child(2n+1) > td, tbody > tr:nth-child(2n+1) > th {
+		background-color: #eeeeee;
+	}
+	tr td img {
+		width: 200px;
+	}
+	</style>  
+</head>
+<body unresolved>
+
+<p>An `page-er` looks like this:</p>
+
+<!-- Using Custom Elements -->
+<page-er perpage="10" rangeSize="3"></page-er>
+
+<flatiron-director id="router" autoHash></flatiron-director>
+<core-ajax auto url="http://gdata.youtube.com/feeds/api/videos/" 
+  params='{"alt":"json", "q":"chrome"}'
+  handleAs="json"></core-ajax>
+
+<div class="container">
+	<table>
+		<thead>
+			<tr>
+				<th>Thumbnail</th>
+				<th>Title</th>
+				<th>Length</th>
+				<th>Link</th>
+			</tr>
+		</thead>
+		<tbody>
+			<template id="items" repeat="{{items.feed.entry}}">
+				<tr>
+					<td><img src="{{media$group.media$thumbnail[0].url}}"/></td>
+					<td>{{title.$t}}</td>
+					<td>{{yt$duration.seconds}}s</td>
+					<td><a href="{{link[0].href}}">Watch video</a></td>
+				</tr>
+			</template>
+		</tbody>
+	</table>
+</div>
+<script>
+	// Select the grid/table where your main data will appear
+	var t = document.querySelector("#items");
+	// Select the paginator to use with this element
+	var m = document.querySelector("page-er");
+	// Routing
+	var r = document.querySelector("#router");
+
+	// Create a model we will populate with data
+	var model = {};
+
+	// When Polymer (and our paginator) are ready..
+	document.addEventListener('polymer-ready', function() {
+		var ajax = document.querySelector("core-ajax");
+		ajax.addEventListener("core-response", 
+			function(e) {
+				 model = { items: e.detail.response };
+				 console.log(model);
+			 	 t.model = model;
+			 	 m.data = model.items.feed.entry;
+			 	 if (r.route > 0){
+			 	 	m.changePage(r.route);
+			 	 }
+			}
+		);
+	});
+
+	document.addEventListener('director-route', function(e) {
+		if(model.length >0){
+			if(m.data.length <= 0){
+				m.data = model.items.feed.entry;
+			}
+			m.changePage(r.route);
+		}
+	});
+
+	document.addEventListener('pager-next', function(e) {
+		r.route = e.detail.page;
+	});
+
+	document.addEventListener('pager-previous', function(e) {
+		r.route = e.detail.page;
+	});
+
+	document.addEventListener('pager-data', function(e) {
+		t.model.items.feed.entry = e.detail.data;
+	});
+
+	document.addEventListener('pager-change', function(e) {
+		t.model.items.feed.entry = e.detail.data;
+		r.route = e.detail.page;
+	});
+</script>
+</body>
+</html>

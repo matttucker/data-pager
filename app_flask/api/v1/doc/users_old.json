@@ -1,0 +1,134 @@
+{
+    "apis" : [
+            {
+                "path" : "/comments",
+                "description" : "Comment operations.",
+                "operations" : [ {
+                    "httpMethod" : "GET",
+                    "nickname" : "get_comments",
+                    "summary" : "Get a list of comments.",
+                    "notes" : "",
+                    "parameters" : [ {
+                        "name" : "user_id",
+                        "description" : "Get comments by user id.",
+                        "required" : false,
+                        "dataType" : "string",
+                        "paramType" : "query"
+                    },
+                    {
+                        "name" : "track_id",
+                        "description" : "Get comments by track id.",
+                        "required" : false,
+                        "dataType" : "string",
+                        "paramType" : "query"
+                    }, 
+                    {
+                        "name" : "limit",
+                        "description" : "Maximum number of results to return.",
+                        "required" : false,
+                        "dataType" : "int",
+                        "paramType" : "query"
+                    } 
+                    
+                    ]
+                },
+                {   "httpMethod" : "POST",
+                    "nickname" : "create_comment",
+                    "summary" : "Create a comment.",
+                    "description" : "Create a comment.",
+                    "notes" : "This endpoint can also be used to reply to a previous comment.",
+                    "parameters" : [ {
+                        "name" : "track_id",
+                        "description" : "Id of the track to comment on",
+                        "required" : false,
+                        "dataType" : "string",
+                        "paramType" : "query"
+                    }
+                    ,{
+                        "name" : "reply_to_id",
+                        "description" : "Id of comment this comment is replying to",
+                        "required" : false,
+                        "dataType" : "string",
+                        "paramType" : "query"
+                    }
+                    ,{
+                        "name" : "text",
+                        "description" : "Comment text",
+                        "required" : true,
+                        "dataType" : "string",
+                        "paramType" : "query"
+                    }
+                    ,{
+                        "name" : "post_to_facebook",
+                        "description" : "Post to facebook if set to true",
+                        "required" : false,
+                        "dataType" : "boolean",
+                        "paramType" : "query"
+                    }
+                   
+                    ,{
+                        "name" : "start",
+                        "description" : "Time of comment in song (seconds)",
+                        "required" : false,
+                        "dataType" : "int",
+                        "paramType" : "query"
+                    }
+                    ,{
+                        "name" : "end",
+                        "description" : "?? Is this necessary.",
+                        "required" : false,
+                        "dataType" : "int",
+                        "paramType" : "query"
+                    }
+                    
+                    ]
+                }
+                
+                
+                
+                ]
+            },
+            {
+                "path" : "/comments/{id}",
+                "description" : "Operations on a specific comment.",
+                "operations" : [ {
+                    "httpMethod" : "GET",
+                    "nickname" : "get_comment_by_id",
+                    "summary" : "Get a comment by its unique ID.",
+                    "description" : "Get a comment",
+                    "notes" : "",
+                    "parameters" : [ {
+                        "name" : "id",
+                        "description" : "unique id of comment",
+                        "required" : true,
+                        "dataType" : "int",
+                        "paramType" : "path"
+                    } ]
+                }, 
+               
+                {
+                    "httpMethod" : "DELETE",
+                    "nickname" : "delete_comment_by_id",
+                    "summary" : "Delete a comment.",
+                    "description" : "Delete a comment.",
+                    "notes" : "",
+                    "parameters" : [ {
+                        "name" : "id",
+                        "description" : "unique id of comment",
+                        "required" : true,
+                        "dataType" : "int",
+                        "paramType" : "path"
+                    } ]
+                }
+                
+                
+                
+                
+                ]
+            }
+            
+            ],
+    "apiVersion" : "1",
+    "swaggerVersion" : "1.1",
+    "basePath" : "/api/v1"
+}

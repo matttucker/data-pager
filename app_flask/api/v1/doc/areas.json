@@ -1,0 +1,53 @@
+{
+    "apis": [{
+            "path": "/areas/{id}",
+            "description": "Operations on a specific area.",
+            "operations": [{
+                "httpMethod": "GET",
+                "nickname": "get_area_by_id",
+                "summary": "Get area by its id.",
+                "description": "Get area by its id.",
+                "notes": "",
+                "parameters": [{
+                    "name": "id",
+                    "description": "Unique id of area.",
+                    "required": true,
+                    "dataType": "string",
+                    "paramType": "path"
+                }]
+            }]
+        }, {
+            "path": "/areas/{id}/trails",
+            "description": "Operations on trails for a specific area.",
+            "operations": [{
+                "httpMethod": "GET",
+                "nickname": "get_trails_by_area_id",
+                "summary": "Get trails for an area.",
+                "description": "Get trails for an area.",
+                "notes": "",
+                "parameters": [{
+                        "name": "id",
+                        "description": "Unique id of area.",
+                        "required": true,
+                        "dataType": "string",
+                        "paramType": "path"
+                    }, {
+                        "name": "after",
+                        "description": "Get trails updated after a time",
+                        "required": false,
+                        "dataType": "string",
+                        "paramType": "query"
+                    }
+
+
+                ]
+            }]
+        }
+
+
+
+    ],
+    "apiVersion": "1",
+    "swaggerVersion": "1.1",
+    "basePath": "/api/v1"
+}
